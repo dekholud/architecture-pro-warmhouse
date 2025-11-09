@@ -1,0 +1,33 @@
+C4Context
+    title [System Context] Smart Home System
+    Boundary(b0, "") {
+        Person_Ext(customer, "Customer")
+        System_Ext(devices, "Devices", "Home automation equipment")
+        Enterprise_Boundary(b1, "Smart Home company") {
+            Person(support, "Support Engineer")
+            System(system, "Smart Home Application")
+            SystemDb(systemDb, "Smart Home Database")
+        }
+    }
+
+    BiRel(customer, system, "Interacts")
+    BiRel(system, systemDb, "Reads/writes data")
+    Rel(support, system, "Technical support")
+    Rel(system, devices, "Monitors and controls")
+    BiRel(support, customer, "User support")
+    Rel(support, devices, "Technical support")
+
+    UpdateElementStyle(b0, $borderColor="green")
+    UpdateElementStyle(b1, $borderColor="green")
+    UpdateElementStyle(customer, $fontColor="blue", $bgColor="white", $borderColor="green")
+    UpdateElementStyle(devices, $fontColor="blue", $bgColor="white", $borderColor="green")
+    UpdateElementStyle(support, $fontColor="blue", $bgColor="white", $borderColor="green")
+    UpdateElementStyle(system, $fontColor="blue", $bgColor="white", $borderColor="green")
+    UpdateElementStyle(systemDb, $fontColor="blue", $bgColor="white", $borderColor="green")
+
+    UpdateRelStyle(system, devices, $textColor="black", $lineColor="teal", $offsetY="-40", $offsetX="+10")
+    UpdateRelStyle(support, customer, $textColor="black", $lineColor="teal", $offsetY="-40", $offsetX="-95")
+    UpdateRelStyle(support, devices, $textColor="black", $lineColor="teal", $offsetY="-40", $offsetX="+30")
+    UpdateRelStyle(customer, system, $textColor="black", $lineColor="teal", $offsetY="+60", $offsetX="+20")
+    UpdateRelStyle(support, system, $textColor="black", $lineColor="teal", $offsetY="+20", $offsetX="-30")
+    UpdateRelStyle(system, systemDb, $textColor="black", $lineColor="teal", $offsetY="+30", $offsetX="-30")
